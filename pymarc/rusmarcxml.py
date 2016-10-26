@@ -22,10 +22,16 @@ import pymarc.marcxml
 from pymarc.marcxml import parse_xml
 from pymarc.marcxml import record_to_xml, record_to_xml_node
 
+DIGITS=set("0123456789")
 
 class XmlHandler(pymarc.marcxml.XmlHandler):
     """Handler for very strange Russian XML format for RUSMARC.
     """
+
+    def __init__(self, strict=False, normalize_form=None):
+        super(XmlHandler,self).\
+            __init__(strict=strict, normalize_form=normalize_form)
+        self._indicators = None
 
     def startElementNS(self, name, qname, attrs):
         # NO Stricts
@@ -41,8 +47,7 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
         elif element.startswith("m_"):
             pass  # See endElementNS for implementation
         elif element == "IND":
-            self._field.indicator1, self._field.indicator2 = \
-                self._field.indicators = parameter.replace("_"," ")
+            self._indicators = parameter.replace("_"," ")
             self._field.subfields = []
         elif element == "FIELD":
             self._field = Field(parameter, [" ", " "])
@@ -69,14 +74,22 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
         elif element.startswith("m_"):
             self._record.leader += text
         elif element.startswith("FIELD"):
+            if self._field.tag.startswith("00"):
+                self._field.data = text
             self._record.add_field(self._field)
             self._field = None
         elif element.startswith("SUBFIELD"):
-            self._field.subfields.append(self._subfield_code)
-            self._field.subfields.append(text)
+            if self._subfield_code in [DIGITS] and self._field.tag.startswith("00"):
+                self._field.data = text
+            else:
+                self._field.subfields.append(self._subfield_code)
+                self._field.subfields.append(text)
             self._subfield_code = None
         elif element.startswith("IND"):
-            pass
+            if not self._field.tag.startswith("00"):
+                self._field.indicator1, self._field.indicator2 = \
+                    self._field.indicators = self._indicators
+            self._indicators=None
         elif element == "RECORDS":
             pass
         else:
