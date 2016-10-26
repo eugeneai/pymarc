@@ -22,6 +22,7 @@ import pymarc.marcxml
 from pymarc.marcxml import parse_xml
 from pymarc.marcxml import record_to_xml, record_to_xml_node
 
+
 class XmlHandler(pymarc.marcxml.XmlHandler):
     """Handler for very strange Russian XML format for RUSMARC.
     """
@@ -29,43 +30,44 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
     def startElementNS(self, name, qname, attrs):
         # NO Stricts
         try:
-            element, parameter  = name[1].split(".")
+            element, parameter = name[1].split(".")
         except ValueError:
             element = name[1]
 
-        if element=="rusmarc":
+        if element == "rusmarc":
             self._record = Record()
-        elif element=="mrk":
-            self._record.leader=""
+        elif element == "mrk":
+            self._record.leader = ""
         elif element.startswith("m_"):
-            pass # See endElementNS for implementation
+            pass  # See endElementNS for implementation
         elif element == "IND":
             self._field.indicator1, self._field.indicator2 = \
                 self._field.indicators = parameter.replace("_"," ")
-            self._field.subfields=[]
+            self._field.subfields = []
         elif element == "FIELD":
-            self._field=Field(parameter,[" "," "])
+            self._field = Field(parameter, [" ", " "])
         elif element == "SUBFIELD":
-            self._subfield_code=parameter
+            self._subfield_code = parameter
         elif element == "RECORDS":
             pass
         else:
             raise RuntimeError("cannot process tag %s" % element)
 
-        self._text=[]
+        self._text = []
 
     def endElementNS(self, name, qname):
         element = name[1]
 
         text = u''.join(self._text)
 
-        if element=="rusmarc":
-            self.process_record(self._record)
+        if element == "rusmarc":
+            record = self.convert_record(self._record)
             self._record = None
+            self.process_record(record)
         elif element == "mrk":
             pass
         elif element.startswith("m_"):
-            self._record.leader+=text
+            self._record.leader += text
         elif element.startswith("FIELD"):
             self._record.add_field(self._field)
             self._field = None
@@ -79,6 +81,10 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
             pass
         else:
             raise RuntimeError("cannot process tag %s" % element)
+
+    def convert_record(self, record):
+        return record
+
 
 def map_xml(function, *files):
     """
@@ -94,6 +100,7 @@ def map_xml(function, *files):
     handler.process_record = function
     for xml_file in files:
         parse_xml(xml_file, handler)
+
 
 def parse_xml_to_array(xml_file, strict=False, normalize_form=None):
     """
