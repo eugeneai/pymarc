@@ -19,10 +19,12 @@ from pymarc import Record, Field, MARC8ToUnicode
 #MARC_XML_SCHEMA = "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd"
 
 import pymarc.marcxml
+import pymarc.rusto21
 from pymarc.marcxml import parse_xml
 from pymarc.marcxml import record_to_xml, record_to_xml_node
 
-DIGITS=set("0123456789")
+DIGITS = set("0123456789")
+
 
 class XmlHandler(pymarc.marcxml.XmlHandler):
     """Handler for very strange Russian XML format for RUSMARC.
@@ -47,7 +49,7 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
         elif element.startswith("m_"):
             pass  # See endElementNS for implementation
         elif element == "IND":
-            self._indicators = parameter.replace("_"," ")
+            self._indicators = parameter.replace("_", " ")
             self._field.subfields = []
         elif element == "FIELD":
             self._field = Field(parameter, [" ", " "])
@@ -79,7 +81,8 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
             self._record.add_field(self._field)
             self._field = None
         elif element.startswith("SUBFIELD"):
-            if self._subfield_code in [DIGITS] and self._field.tag.startswith("00"):
+            if self._subfield_code in [DIGITS] and self._field.tag.startswith(
+                    "00"):
                 self._field.data = text
             else:
                 self._field.subfields.append(self._subfield_code)
@@ -89,13 +92,50 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
             if not self._field.tag.startswith("00"):
                 self._field.indicator1, self._field.indicator2 = \
                     self._field.indicators = self._indicators
-            self._indicators=None
+            self._indicators = None
         elif element == "RECORDS":
             pass
         else:
             raise RuntimeError("cannot process tag %s" % element)
 
     def convert_record(self, record):
+        fields = []
+        fields.extend(record.fields)
+        record.fields = list()
+        for field in fields:
+            for key, value in pymarc.rusto21.CONV.items():
+                if key[0] == field.tag:
+                    vars={}
+                    _, ind1, ind2 = key
+                    if ind1 is not None:
+                        vars[ind1] = field.indicator1
+                    if ind2 is not None:
+                        vars[ind2] = field.indicator1
+
+                    new_tag, nind1, nind2, subconv = value
+                    if nind1 is not None:
+                        nind1 = vars.get(nind1, nind1)
+                    if nind2 is not None:
+                        nind2 = vars.get(nind2, nind2)
+
+                    indicators = [nind1, nind2]
+                    new_field = Field(new_tag, indicators=indicators)
+                    for j in range(len(field.subfields) // 2):
+                        i=j*2
+                        subid = field.subfields[i]
+                        if subid in subconv:
+                            subval = subconv[subid]
+                            if subval is None:
+                                new_field.data = field.subfields[i+1]
+                            else:
+                                new_field.subfields.append(subval)
+                                new_field.subfields.append(field.subfields[i+1])
+                        else:
+                            new_field.subfields.append(subid)
+                            new_field.subfields.append(field.subfields[i+1])
+                    field = new_field
+                    break
+            record.add_field(field)
         return record
 
 
