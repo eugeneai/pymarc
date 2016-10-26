@@ -19,7 +19,7 @@ from pymarc import Record, Field, MARC8ToUnicode
 #MARC_XML_SCHEMA = "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd"
 
 import pymarc.marcxml
-from pymarc.marcxml import parse_xml, map_xml, parse_xml_to_array
+from pymarc.marcxml import parse_xml
 from pymarc.marcxml import record_to_xml, record_to_xml_node
 
 class XmlHandler(pymarc.marcxml.XmlHandler):
@@ -28,9 +28,81 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
 
     def startElementNS(self, name, qname, attrs):
         # NO Stricts
-        element = name[1]
-        print ("Start:", element)
+        try:
+            element, parameter  = name[1].split(".")
+        except ValueError:
+            element = name[1]
+
+        if element=="rusmarc":
+            self._record = Record()
+        elif element=="mrk":
+            self._record.leader=""
+        elif element.startswith("m_"):
+            pass # See endElementNS for implementation
+        elif element == "IND":
+            self._field.indicator1, self._field.indicator2 = \
+                self._field.indicators = parameter.replace("_"," ")
+            self._field.subfields=[]
+        elif element == "FIELD":
+            self._field=Field(parameter,[" "," "])
+        elif element == "SUBFIELD":
+            self._subfield_code=parameter
+        elif element == "RECORDS":
+            pass
+        else:
+            raise RuntimeError("cannot process tag %s" % element)
+
+        self._text=[]
 
     def endElementNS(self, name, qname):
         element = name[1]
-        print ("End:", element)
+
+        text = u''.join(self._text)
+
+        if element=="rusmarc":
+            self.process_record(self._record)
+            self._record = None
+        elif element == "mrk":
+            pass
+        elif element.startswith("m_"):
+            self._record.leader+=text
+        elif element.startswith("FIELD"):
+            self._record.add_field(self._field)
+            self._field = None
+        elif element.startswith("SUBFIELD"):
+            self._field.subfields.append(self._subfield_code)
+            self._field.subfields.append(text)
+            self._subfield_code = None
+        elif element.startswith("IND"):
+            pass
+        elif element == "RECORDS":
+            pass
+        else:
+            raise RuntimeError("cannot process tag %s" % element)
+
+def map_xml(function, *files):
+    """
+    map a function onto the file, so that for each record that is
+    parsed the function will get called with the extracted record
+
+    def do_it(r):
+      print(r)
+
+    map_xml(do_it, 'marc.xml')
+    """
+    handler = XmlHandler()
+    handler.process_record = function
+    for xml_file in files:
+        parse_xml(xml_file, handler)
+
+def parse_xml_to_array(xml_file, strict=False, normalize_form=None):
+    """
+    parse an xml file and return the records as an array. If you would
+    like the parser to explicitly check the namespaces for the MARCSlim
+    namespace use the strict=True option.
+    Valid values for normalize_form are 'NFC', 'NFKC', 'NFD', and 'NFKD'. See
+    unicodedata.normalize info.
+    """
+    handler = XmlHandler(strict, normalize_form)
+    parse_xml(xml_file, handler)
+    return handler.records
