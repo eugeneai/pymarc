@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RECORDS>
+<rusmarc>
+<mrk>
+<m_0_4 len="5">#####</m_0_4>
+<m_5_5 len="1">n</m_5_5>
+<m_6_6 len="1">a</m_6_6>
+<m_7_7 len="1">m</m_7_7>
+<m_8_8 len="1">0</m_8_8>
+<m_9_9 len="1"> </m_9_9>
+<m_10_10 len="1">2</m_10_10>
+<m_11_11 len="1">2</m_11_11>
+<m_12_16 len="5">#####</m_12_16>
+<m_17_17 len="1"> </m_17_17>
+<m_18_18 len="1">i</m_18_18>
+<m_19_19 len="1"> </m_19_19>
+<m_20_23 len="4">450 </m_20_23>
+</mrk>
+<FIELD.1>
+RU/ГПНТБ России/IDSTU/Ч7/П 59-372810
+</FIELD.1>
+<FIELD.5>
+<IND.20><SUBFIELD.1>0706000000.0</SUBFIELD.1></IND.20>
+</FIELD.5>
+<FIELD.101>
+<IND.0_><SUBFIELD.a>rus</SUBFIELD.a></IND.0_>
+</FIELD.101>
+<FIELD.102>
+<IND.__><SUBFIELD.a>RU</SUBFIELD.a></IND.__>
+</FIELD.102>
+<FIELD.105>
+<IND.__><SUBFIELD.a>a   ||||000zy</SUBFIELD.a></IND.__>
+</FIELD.105>
+<FIELD.200>
+<IND.1_><SUBFIELD.a>Поручи поиск человеку. Виртуальные справочные службы в современных библиотеках</SUBFIELD.a><SUBFIELD.f>Михнова И.Б. и др.</SUBFIELD.f></IND.1_>
+</FIELD.200>
+<FIELD.210>
+<IND.__><SUBFIELD.a>М.</SUBFIELD.a><SUBFIELD.c>ФАИР-ПРЕСС</SUBFIELD.c><SUBFIELD.d>2005</SUBFIELD.d></IND.__>
+</FIELD.210>
+<FIELD.215>
+<IND.__><SUBFIELD.a>304 с.</SUBFIELD.a><SUBFIELD.c>ил.</SUBFIELD.c></IND.__>
+</FIELD.215>
+<FIELD.620>
+<IND.__><SUBFIELD.d>Москва </SUBFIELD.d></IND.__>
+</FIELD.620>
+<FIELD.801>
+<IND._0><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20060922</SUBFIELD.c></IND._0>
+</FIELD.801>
+<FIELD.801>
+<IND._1><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20110706</SUBFIELD.c></IND._1>
+</FIELD.801>
+<FIELD.852>
+<IND.5_><SUBFIELD.a>ГПНТБ России</SUBFIELD.a><SUBFIELD.m>13129</SUBFIELD.m><SUBFIELD.b>ХР</SUBFIELD.b><SUBFIELD.j>Ч7</SUBFIELD.j><SUBFIELD.p>RU</SUBFIELD.p></IND.5_>
+</FIELD.852>
+</rusmarc>
+<rusmarc>
+<mrk>
+<m_0_4 len="5">#####</m_0_4>
+<m_5_5 len="1">n</m_5_5>
+<m_6_6 len="1">a</m_6_6>
+<m_7_7 len="1">m</m_7_7>
+<m_8_8 len="1">0</m_8_8>
+<m_9_9 len="1"> </m_9_9>
+<m_10_10 len="1">2</m_10_10>
+<m_11_11 len="1">2</m_11_11>
+<m_12_16 len="5">#####</m_12_16>
+<m_17_17 len="1"> </m_17_17>
+<m_18_18 len="1">i</m_18_18>
+<m_19_19 len="1"> </m_19_19>
+<m_20_23 len="4">450 </m_20_23>
+</mrk>
+<FIELD.1>
+RU/ГПНТБ России/IDSTU/У2/У-67-499975
+</FIELD.1>
+<FIELD.5>
+<IND.20><SUBFIELD.2>0228000000.0</SUBFIELD.2></IND.20>
+</FIELD.5>
+<FIELD.101>
+<IND.0_><SUBFIELD.a>rus</SUBFIELD.a></IND.0_>
+</FIELD.101>
+<FIELD.102>
+<IND.__><SUBFIELD.a>RU</SUBFIELD.a></IND.__>
+</FIELD.102>
+<FIELD.105>
+<IND.__><SUBFIELD.a>y   ||||000zy</SUBFIELD.a></IND.__>
+</FIELD.105>
+<FIELD.200>
+<IND.1_><SUBFIELD.a>Управление промышленностью в союзной республике</SUBFIELD.a><SUBFIELD.f>Под ред. В.И. Шабайлова, Ю.А. Тихомирова</SUBFIELD.f></IND.1_>
+</FIELD.200>
+<FIELD.210>
+<IND.__><SUBFIELD.a>Минск</SUBFIELD.a><SUBFIELD.c>Наука и техника</SUBFIELD.c><SUBFIELD.d>1987</SUBFIELD.d></IND.__>
+</FIELD.210>
+<FIELD.215>
+<IND.__><SUBFIELD.a>294 с.</SUBFIELD.a></IND.__>
+</FIELD.215>
+<FIELD.320>
+<IND.__><SUBFIELD.a>Авт. указаны на об. тит. л.</SUBFIELD.a></IND.__>
+</FIELD.320>
+<FIELD.701>
+<IND._1><SUBFIELD.a>Шабайлов</SUBFIELD.a><SUBFIELD.b>В.И. и др.</SUBFIELD.b><SUBFIELD.4>070</SUBFIELD.4></IND._1>
+</FIELD.701>
+<FIELD.801>
+<IND._0><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20061024</SUBFIELD.c></IND._0>
+</FIELD.801>
+<FIELD.801>
+<IND._1><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20120228</SUBFIELD.c></IND._1>
+</FIELD.801>
+<FIELD.852>
+<IND.5_><SUBFIELD.a>ГПНТБ России</SUBFIELD.a><SUBFIELD.m>7732</SUBFIELD.m><SUBFIELD.j>У2</SUBFIELD.j><SUBFIELD.p>RU</SUBFIELD.p></IND.5_>
+</FIELD.852>
+</rusmarc>
+<rusmarc>
+<mrk>
+<m_0_4 len="5">#####</m_0_4>
+<m_5_5 len="1">n</m_5_5>
+<m_6_6 len="1">a</m_6_6>
+<m_7_7 len="1">m</m_7_7>
+<m_8_8 len="1">0</m_8_8>
+<m_9_9 len="1"> </m_9_9>
+<m_10_10 len="1">2</m_10_10>
+<m_11_11 len="1">2</m_11_11>
+<m_12_16 len="5">#####</m_12_16>
+<m_17_17 len="1"> </m_17_17>
+<m_18_18 len="1">i</m_18_18>
+<m_19_19 len="1"> </m_19_19>
+<m_20_23 len="4">450 </m_20_23>
+</mrk>
+<FIELD.1>
+RU/ГПНТБ России/IDSTU/У2/О-28-532635
+</FIELD.1>
+<FIELD.5>
+<IND.20><SUBFIELD.5>0428000000.0</SUBFIELD.5></IND.20>
+</FIELD.5>
+<FIELD.101>
+<IND.0_><SUBFIELD.a>rus</SUBFIELD.a></IND.0_>
+</FIELD.101>
+<FIELD.102>
+<IND.__><SUBFIELD.a>RU</SUBFIELD.a></IND.__>
+</FIELD.102>
+<FIELD.105>
+<IND.__><SUBFIELD.a>y   ||||000zy</SUBFIELD.a></IND.__>
+</FIELD.105>
+<FIELD.200>
+<IND.1_><SUBFIELD.a>Общесистемное проектирование АСУ реального времени</SUBFIELD.a><SUBFIELD.f>С.В. Володин, А.Н. Макаров, Ю.Д. Умрихин, В.А. Фараджев</SUBFIELD.f><SUBFIELD.g> Под ред. В.А. Шабалина</SUBFIELD.g></IND.1_>
+</FIELD.200>
+<FIELD.210>
+<IND.__><SUBFIELD.a>М.</SUBFIELD.a><SUBFIELD.c>Радио и связь</SUBFIELD.c><SUBFIELD.d>1984</SUBFIELD.d></IND.__>
+</FIELD.210>
+<FIELD.215>
+<IND.__><SUBFIELD.a>232 с.</SUBFIELD.a></IND.__>
+</FIELD.215>
+<FIELD.320>
+<IND.__><SUBFIELD.a>Авт. указаны на об. тит. л</SUBFIELD.a></IND.__>
+</FIELD.320>
+<FIELD.320>
+<IND.__><SUBFIELD.a>Библиогр.: с. 227-230</SUBFIELD.a></IND.__>
+</FIELD.320>
+<FIELD.620>
+<IND.__><SUBFIELD.d>Москва </SUBFIELD.d></IND.__>
+</FIELD.620>
+<FIELD.686>
+<IND.__><SUBFIELD.2>rubbk</SUBFIELD.2><SUBFIELD.a>У 21</SUBFIELD.a></IND.__>
+</FIELD.686>
+<FIELD.701>
+<IND._1><SUBFIELD.a>Володин</SUBFIELD.a><SUBFIELD.b>С.В. и др.</SUBFIELD.b><SUBFIELD.4>070</SUBFIELD.4></IND._1>
+</FIELD.701>
+<FIELD.702>
+<IND._1><SUBFIELD.a>Шабалин</SUBFIELD.a><SUBFIELD.b>В.А.</SUBFIELD.b><SUBFIELD.4>340</SUBFIELD.4></IND._1>
+</FIELD.702>
+<FIELD.801>
+<IND._0><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20061024</SUBFIELD.c></IND._0>
+</FIELD.801>
+<FIELD.801>
+<IND._1><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20150428</SUBFIELD.c></IND._1>
+</FIELD.801>
+<FIELD.852>
+<IND.5_><SUBFIELD.a>ГПНТБ России</SUBFIELD.a><SUBFIELD.m>2192</SUBFIELD.m><SUBFIELD.b>ХР</SUBFIELD.b><SUBFIELD.j>У2</SUBFIELD.j><SUBFIELD.p>RU</SUBFIELD.p></IND.5_>
+</FIELD.852>
+</rusmarc>
+<rusmarc>
+<FIELD.215>
+<IND.__><SUBFIELD.a>120 с.</SUBFIELD.a></IND.__>
+</FIELD.215>
+<FIELD.225>
+<IND.2_><SUBFIELD.a>АН СССР. Уральский научный центр. Ин-т математики и механики. Тр. Вып. 20 </SUBFIELD.a></IND.2_>
+</FIELD.225>
+<FIELD.686>
+<IND.__><SUBFIELD.2>rubbk</SUBFIELD.2><SUBFIELD.a>З 965-01</SUBFIELD.a></IND.__>
+</FIELD.686>
+<FIELD.801>
+<IND._0><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20151229</SUBFIELD.c></IND._0>
+</FIELD.801>
+<FIELD.801>
+<IND._1><SUBFIELD.b>ГПНТБ России</SUBFIELD.b><SUBFIELD.a>RU</SUBFIELD.a><SUBFIELD.c>20151229</SUBFIELD.c></IND._1>
+</FIELD.801>
+<FIELD.852>
+<IND.5_><SUBFIELD.a>ГПНТБ России</SUBFIELD.a><SUBFIELD.m>3587</SUBFIELD.m><SUBFIELD.b>ХР</SUBFIELD.b><SUBFIELD.j>З 96</SUBFIELD.j><SUBFIELD.p>RU</SUBFIELD.p></IND.5_>
+</FIELD.852>
+</rusmarc>
+</RECORDS>
