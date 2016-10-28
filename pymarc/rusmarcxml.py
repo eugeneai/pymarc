@@ -25,6 +25,8 @@ from pymarc.marcxml import record_to_xml, record_to_xml_node
 
 DIGITS = set("0123456789")
 
+CFIELDS={}
+
 
 class XmlHandler(pymarc.marcxml.XmlHandler):
     """Handler for very strange Russian XML format for RUSMARC.
@@ -135,6 +137,9 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
                             new_field.subfields.append(field.subfields[i+1])
                     field = new_field
                     break
+            else:
+                CFIELDS.setdefault(field.tag, field)
+
             record.add_field(field)
         return record
 
