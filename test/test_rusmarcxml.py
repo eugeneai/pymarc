@@ -7,14 +7,13 @@ from pymarc.rusmarcxml import CFIELDS
 from pprint import pprint
 from pymarc import Record
 
-class LoadRUXMLMARC(unittest.TestCase):
+
+class TestLoadRUXMLMARC(unittest.TestCase):
     def test_load(self):
         records = parse_xml_to_array('test/rusmarc.xml')
         self.assertEqual(len(records), 4)
-        # Make fake record to print field examples
-        record = Record()
-        record.add_fields(CFIELDS)
-        print(record)
+        for rec in records:
+            print(rec)
 
     # def test_big_load(self):
     #     records = parse_xml_to_array('test/exp.XML')
