@@ -21,11 +21,10 @@ from pymarc import Record, Field, MARC8ToUnicode
 import pymarc.marcxml
 import pymarc.rusto21
 from pymarc.marcxml import parse_xml
-from pymarc.marcxml import record_to_xml, record_to_xml_node
 
 DIGITS = set("0123456789")
 
-CFIELDS={}
+CFIELDS = {}
 
 
 class XmlHandler(pymarc.marcxml.XmlHandler):
@@ -33,7 +32,7 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
     """
 
     def __init__(self, strict=False, normalize_form=None):
-        super(XmlHandler,self).\
+        super(XmlHandler, self).\
             __init__(strict=strict, normalize_form=normalize_form)
         self._indicators = None
 
@@ -107,7 +106,7 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
         for field in fields:
             for key, value in pymarc.rusto21.CONV.items():
                 if key[0] == field.tag:
-                    vars={}
+                    vars = {}
                     _, ind1, ind2 = key
                     if ind1 is not None:
                         vars[ind1] = field.indicator1
@@ -123,18 +122,19 @@ class XmlHandler(pymarc.marcxml.XmlHandler):
                     indicators = [nind1, nind2]
                     new_field = Field(new_tag, indicators=indicators)
                     for j in range(len(field.subfields) // 2):
-                        i=j*2
+                        i = j * 2
                         subid = field.subfields[i]
                         if subid in subconv:
                             subval = subconv[subid]
                             if subval is None:
-                                new_field.data = field.subfields[i+1]
+                                new_field.data = field.subfields[i + 1]
                             else:
                                 new_field.subfields.append(subval)
-                                new_field.subfields.append(field.subfields[i+1])
+                                new_field.subfields.append(
+                                    field.subfields[i + 1])
                         else:
                             new_field.subfields.append(subid)
-                            new_field.subfields.append(field.subfields[i+1])
+                            new_field.subfields.append(field.subfields[i + 1])
                     field = new_field
                     break
             else:

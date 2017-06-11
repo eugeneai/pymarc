@@ -1,11 +1,5 @@
 import unittest
 from pymarc.rusmarcxml import parse_xml_to_array
-import os
-import textwrap
-from six import BytesIO, StringIO, u, binary_type
-from pymarc.rusmarcxml import CFIELDS
-from pprint import pprint
-from pymarc import Record
 
 
 class TestLoadRUXMLMARC(unittest.TestCase):
