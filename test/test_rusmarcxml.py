@@ -26,9 +26,11 @@ class TestLoadRUXMLMARC(unittest.TestCase):
     def test_json(self):
         recs = self.recs
         for rec in recs:
-            assert rec.as_json()
+            ser = rec.as_json()
+            print(ser)
 
     def test_dict(self):
         recs = self.recs
         for rec in recs:
-            assert rec.as_dict()
+            d = rec.as_dict()
+            print(d)
